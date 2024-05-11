@@ -24,22 +24,22 @@ if __name__ == '__main__':
     # Experiment 2:
     # - take best combinations from experiment 1 and refit with reduced training data sizes
     # - Paper reference: Fig. 3
-    # experiment_2("fayoum")
+    experiment_2("fayoum")
     #experiment_2("cascifw")
     #experiment_2("apple")
 
     # Experiment 3:
     # - take best shallow classifier from experiment 1 and combine it with different feature encoders
     # - Paper reference: Table 2
-    # experiment_3("fayoum")
+    experiment_3("fayoum")
     #experiment_3("cascifw")
     #experiment_3("apple")
 
     # Experiment 4:
     # - Create low-dimensional embedding representations using PCA.
     # - Paper reference: Fig. 4 and Fig. 5
-    # experiment_4("fayoum", subfolder="fayoum/")
-    # experiment_4("fayoum", subfolder="fayoum_oriented/", norm_orient=True)
+    experiment_4("fayoum", subfolder="fayoum/")
+    experiment_4("fayoum", subfolder="fayoum_oriented/", norm_orient=True)
     #experiment_4("cascifw", subfolder="cascifw/")
     #experiment_4("apple", subfolder="apple/")
 
