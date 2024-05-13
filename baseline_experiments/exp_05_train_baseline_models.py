@@ -77,7 +77,7 @@ def fayoum():
 
         "dataset": "fayoum",
         "y_labels": "ripeness",
-        "batch_size": 200,
+        "batch_size": 100,
 
         "model": None,  # set
         "mode": None,  # set all and clf
@@ -91,7 +91,7 @@ def fayoum():
         "scheduler_patience": 15,
 
         "seed": None,  # set
-        "gpu_ids": [0],
+        "gpu_ids": [0, 1],
         "n_epochs": 5000,
         "n_train_samples": None  # set
     }

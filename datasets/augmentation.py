@@ -5,7 +5,7 @@ from torchvision import transforms
 augmentation_strategies = {
     "none": None,
     "default": transforms.RandomHorizontalFlip(),
-    "false": transforms.RandomHorizontalFlip()
+    False: None
     }
 
 '''

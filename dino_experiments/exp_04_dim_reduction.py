@@ -1,5 +1,5 @@
 import warnings
-
+import os
 import torch
 import numpy as np
 from sklearn.manifold import TSNE
@@ -43,14 +43,16 @@ def generate_and_save_embeddings(dataset, encoder_name="dino_vitb8", subfolder="
     file_ref_list = data_loader.dataset.data
     encoder = ENCODERS[encoder_name].to(device).to(device)
     X, y = get_embeddings(encoder, data_loader, -1, batch_size=BATCH_SIZE)
-
+    # 创建文件夹路径
+    results_path = f"results/dim_reduction/{subfolder}"
+    os.makedirs(results_path, exist_ok=True)
     # extra split for semi supervised umap
     random_excluded_indexes = np.random.choice(len(y), size=len(y)//2, replace=False)
     y_masked = y.copy()
     y_masked[random_excluded_indexes] = -1
     label_included = [0 if idx in random_excluded_indexes else 1 for idx in range(len(y))]
-    np.save(f"results/dim_reduction/{subfolder}umap_semi_included.npy", label_included)
-
+    # np.save(f"results/dim_reduction/{subfolder}umap_semi_included.npy", label_included)
+    np.save(os.path.join(results_path, "umap_semi_included.npy"), label_included)
     if norm_orient:
         dataset = dataset + "_oriented"
 

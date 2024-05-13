@@ -132,9 +132,9 @@ def test(model, data_module, logger):
     n_classes = data_module.n_classes
     metrics = {"accuracy": torch_metrics.Accuracy(num_classes=data_module.n_classes, average='macro',
                                                  task='multiclass').to(device),
-               "precision": torch_metrics.Precision(average=None, num_classes=n_classes, task='multiclass').to(device),
-               "recall": torch_metrics.Recall(average=None, num_classes=n_classes, task='multiclass').to(device),
-               "f1": torch_metrics.F1Score(average=None, num_classes=n_classes, task='multiclass').to(device)
+               "precision": torch_metrics.Precision(average='macro', num_classes=n_classes, task='multiclass').to(device),
+               "recall": torch_metrics.Recall(average='macro', num_classes=n_classes, task='multiclass').to(device),
+               "f1": torch_metrics.F1Score(average='macro', num_classes=n_classes, task='multiclass').to(device)
                }
 
     model.eval()
@@ -279,7 +279,7 @@ if __name__ == '__main__':
     # dataset args
     parser.add_argument('--dataset', default="fayoum", choices=AVAILABLE_DATASETS.keys())
     parser.add_argument('--y_labels', default=None, type=str, help="Dataset specific label definition, if applicable.")
-    parser.add_argument('--batch_size', default=256, type=int, help='Batch size per GPU')
+    parser.add_argument('--batch_size', default=128, type=int, help='Batch size per GPU')
     # model args
     parser.add_argument('--model', default="resnet50", type=str, help='Name of pretrained model')
     parser.add_argument('--mode', default="all", choices=["all", "clf", "finetune"],
@@ -297,7 +297,7 @@ if __name__ == '__main__':
     parser.add_argument('--scheduler_patience', default=15, type=int, help='patience for lr adaption (n epochs)')
     # other args
     parser.add_argument('--seed', type=int, default=42, help='Random seed for reproducibility')
-    parser.add_argument('--gpu_ids', default=[0], type=eval, help='IDs of GPUs to use')
+    parser.add_argument('--gpu_ids', default=[0, 1], type=eval, help='IDs of GPUs to use')
     parser.add_argument('--n_epochs', default=10000, type=int, help='Max number of epochs')
     parser.add_argument('--n_train_samples', default=-1, type=int, help='Number of training samples (DINO)')
 

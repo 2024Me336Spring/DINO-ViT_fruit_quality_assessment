@@ -55,7 +55,7 @@ def get_embeddings(model, dataloader, n_samples, batch_size=100):
 class Logger:
 
     def __init__(self, experiment_name):
-        os.makedirs("../results/", exist_ok=True)
+        os.makedirs("./results/", exist_ok=True)
         self.filepath = "results/" + experiment_name + ".txt"
 
     def log(self, params: List):
