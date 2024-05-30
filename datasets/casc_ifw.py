@@ -2,16 +2,19 @@ import os
 from datetime import datetime
 
 import numpy as np
+import pandas as pd
+import torchvision.transforms as transforms
+from torchvision.transforms import RandomHorizontalFlip
 
-from ._abstract import FileListDataModule
+from datasets._abstract import FileListDataModule, FileListDataset
 
 CLASS_NAMES = {
-    "cultivar": ["Fuji", "Golden", "York", "Red"],
-    "condition": ["Healthy", "Injured"],
+    # "cultivar": ["Fuji", "Golden", "York", "Red"],
+    "condition": ["Fresh", "Rotten"],
 }
 
-N_SAMPLES = np.array([[451, 836], [418, 931], [601, 996], [588, 1037]])
-
+# N_SAMPLES = np.array([[451, 836], [418, 931], [601, 996], [588, 1037]])
+N_SAMPLES = np.array([200, 200])
 
 class CascIfwDataModule(FileListDataModule):
 
@@ -19,24 +22,27 @@ class CascIfwDataModule(FileListDataModule):
     image_folder = "Raw image"
     txt_folder = "Ground Truth Text File"
     normalize_values = ((0.5296, 0.5476, 0.3714), (0.2398, 0.2247, 0.2105))
-
-    def __init__(self, batch_size, image_resolution=120, y_labels="condition", data_dir="./data/CASC_IFW",
-                 normalize=True, filter_cultivar=False, filter_condition=False, **kwargs):
-
+    
+    #def __init__(self, batch_size, image_resolution=120, y_labels="condition", data_dir="./data/CASC_IFW",
+    #             normalize=True, filter_cultivar=False, filter_condition=False, **kwargs):
+    def __init__(self, batch_size, image_resolution=(224,224), y_labels="condition", data_dir="./data/CASC_IFW",
+                 normalize=True, **kwargs):    
         if y_labels is None:
             y_labels = "condition"
-        assert y_labels in ["cultivar", "condition", "day", "damage_size", "num_damages"]
-        self.filter_cultivar = filter_cultivar
-        self.filter_condition = filter_condition
+        #assert y_labels in ["cultivar", "condition", "day", "damage_size", "num_damages"]
+        assert y_labels in ["condition"], "Supported y_labels are 'condition' only."        
+        # self.filter_cultivar = filter_cultivar
+        # self.filter_condition = filter_condition
 
         self.img_dir = os.path.join(data_dir, self.image_folder)
-        self.txt_dir = os.path.join(data_dir, self.txt_folder)
-        self.preprocess_directory(self.img_dir)
-        self.preprocess_directory(self.txt_dir)
+        # self.txt_dir = os.path.join(data_dir, self.txt_folder)
+        # self.preprocess_directory(self.img_dir)
+        # self.preprocess_directory(self.txt_dir)
 
         super().__init__(batch_size, image_resolution=image_resolution, y_labels=y_labels, data_dir=self.img_dir,
                          normalize=normalize, **kwargs)
-
+    
+    '''
     @staticmethod
     def preprocess_directory(dir_):
         def reformat_str(str_):
@@ -59,26 +65,32 @@ class CascIfwDataModule(FileListDataModule):
                     continue
                 new_file = reformat_str(file)
                 os.rename(os.path.join(dir_, new_folder, file), os.path.join(dir_, new_folder, new_file))
-
+    '''
     @property
     def n_classes(self):
-        if self.y_labels not in CLASS_NAMES:
-            raise NotImplementedError(f"n_classes not implemented for y_labels=={self.y_labels}")
+        # if self.y_labels not in CLASS_NAMES:
+          #  raise NotImplementedError(f"n_classes not implemented for y_labels=={self.y_labels}")
         return len(CLASS_NAMES[self.y_labels])
 
     @property
     def n_samples(self):
+        return N_SAMPLES.sum()
+        '''
         if self.y_labels in ["condition", "cultivar"]:
             return N_SAMPLES.sum()
+        '''
         raise NotImplementedError(f"n_samples not implemented for y_labels=={self.y_labels}")
-
+        
     @property
     def samples_per_class(self):
+        '''
         if self.y_labels == "condition":
             return N_SAMPLES.sum(axis=0)
         elif self.y_labels == "cultivar":
             return N_SAMPLES.sum(axis=1)
         raise NotImplementedError(f"method not implemented for y_labels=={self.y_labels}")
+        '''
+        return N_SAMPLES
 
     @property
     def class_names(self):
@@ -87,7 +99,7 @@ class CascIfwDataModule(FileListDataModule):
         elif self.y_labels == "condition":
             return CLASS_NAMES["condition"]
         raise Exception(f"class_names method not available for y_labels=={self.y_labels}")
-
+    '''
     @staticmethod
     def read_damage_txt(path):
         if not os.path.isfile(path):
@@ -104,24 +116,35 @@ class CascIfwDataModule(FileListDataModule):
                     defect_d[name] = int(value)
                 defects.append(defect_d)
         return defects
-
-
+    '''
+    '''
     def img_path_to_txt_path(self, path):
         assert path.startswith(self.img_dir)
         new_path = os.path.join(self.txt_dir, path[len(self.img_dir)+1:])
         new_path = new_path.replace(".jpg", ".txt")
         return new_path[:-7] + 'gt_' + new_path[-7:]
-
+    '''
     def build_file_ref_list(self):
         paths = []
         classes = []
-        earliest_date = None
+        #earliest_date = None
         for folder in os.listdir(self.data_dir):
-            if not os.path.isdir(os.path.join(self.data_dir, folder)):
+            folder_path = os.path.join(self.data_dir, folder)
+            if not os.path.isdir(folder_path):
                 continue
-            for file in os.listdir(os.path.join(self.data_dir, folder)):
-                if not file.endswith(self.file_ending):
-                    continue
+            class_label = folder.replace("Apple", "")  # Remove 'Apple' from the folder name to get the class
+            for file in os.listdir(folder_path):
+                if file.endswith(self.file_ending):
+                    filepath = os.path.join(folder_path, file)
+                    paths.append(filepath)
+                    classes.append(class_label)
+                #if not file.endswith(self.file_ending):
+                    #continue
+            
+            
+
+        ys = [CLASS_NAMES[self.y_labels].index(c) for c in classes]                
+        '''
                 filepath = os.path.join(self.data_dir, folder, file)
                 date, cultivar, condition, _ = file.split("_", 3)
                 if self.filter_cultivar and cultivar != self.filter_cultivar:
@@ -151,5 +174,6 @@ class CascIfwDataModule(FileListDataModule):
                     ys.append(max([d["r"] for d in img_defects]) if len(img_defects) > 0 else 0)
         else:
             ys = [CLASS_NAMES[self.y_labels].index(c) for c in classes]
+            '''
         data_all = list(zip(paths, ys))
         return data_all
