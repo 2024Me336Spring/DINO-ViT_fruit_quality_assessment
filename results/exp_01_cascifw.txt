@@ -1,0 +1,61 @@
+transformer;model;train_samples;val_samples;test_samples;seed;test_acc;test_prec;test_recall;test_f1;best_params
+dino_vits8;LogisticRegression;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vits8;KNeighborsClassifier;257;63;80;0;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vits8;SVC;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.0001, 'kernel': 'rbf'}
+dino_vits8;RandomForestClassifier;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 500}
+dino_vits8;MLPClassifier;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'solver': 'adam'}
+dino_vits8;XGBClassifier;257;63;80;0;0.925;[0.9047619  0.94736842];[0.95 0.9 ];[0.92682927 0.92307692];{'n_estimators': 100}
+dino_vits8;LogisticRegression;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vits8;KNeighborsClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vits8;SVC;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vits8;RandomForestClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vits8;MLPClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'solver': 'adam'}
+dino_vits8;XGBClassifier;257;63;80;1;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_estimators': 100}
+dino_vits8;LogisticRegression;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vits8;KNeighborsClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vits8;SVC;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vits8;RandomForestClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vits8;MLPClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'solver': 'adam'}
+dino_vits8;XGBClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vits8;LogisticRegression;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vits8;KNeighborsClassifier;257;63;80;3;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vits8;SVC;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vits8;RandomForestClassifier;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vits8;MLPClassifier;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'solver': 'adam'}
+dino_vits8;XGBClassifier;257;63;80;3;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_estimators': 100}
+dino_vits8;LogisticRegression;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vits8;KNeighborsClassifier;257;63;80;4;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vits8;SVC;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.0001, 'kernel': 'rbf'}
+dino_vits8;RandomForestClassifier;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 500}
+dino_vits8;MLPClassifier;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'solver': 'adam'}
+dino_vits8;XGBClassifier;257;63;80;4;0.975;[0.95238095 1.        ];[1.   0.95];[0.97560976 0.97435897];{'n_estimators': 100}
+dino_vitb8;LogisticRegression;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vitb8;KNeighborsClassifier;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vitb8;SVC;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vitb8;RandomForestClassifier;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vitb8;MLPClassifier;257;63;80;0;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (10, 30, 10), 'learning_rate': 'constant', 'solver': 'sgd'}
+dino_vitb8;XGBClassifier;257;63;80;0;0.975;[0.975 0.975];[0.975 0.975];[0.975 0.975];{'n_estimators': 100}
+dino_vitb8;LogisticRegression;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vitb8;KNeighborsClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vitb8;SVC;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vitb8;RandomForestClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vitb8;MLPClassifier;257;63;80;1;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (10, 30, 10), 'learning_rate': 'constant', 'solver': 'sgd'}
+dino_vitb8;XGBClassifier;257;63;80;1;0.975;[0.975 0.975];[0.975 0.975];[0.975 0.975];{'n_estimators': 100}
+dino_vitb8;LogisticRegression;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vitb8;KNeighborsClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vitb8;SVC;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vitb8;RandomForestClassifier;257;63;80;2;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_estimators': 10}
+dino_vitb8;MLPClassifier;257;63;80;2;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (10, 30, 10), 'learning_rate': 'constant', 'solver': 'sgd'}
+dino_vitb8;XGBClassifier;257;63;80;2;0.9875;[0.97560976 1.        ];[1.    0.975];[0.98765432 0.98734177];{'n_estimators': 100}
+dino_vitb8;LogisticRegression;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vitb8;KNeighborsClassifier;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vitb8;SVC;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vitb8;RandomForestClassifier;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vitb8;MLPClassifier;257;63;80;3;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (10, 30, 10), 'learning_rate': 'constant', 'solver': 'sgd'}
+dino_vitb8;XGBClassifier;257;63;80;3;0.975;[0.975 0.975];[0.975 0.975];[0.975 0.975];{'n_estimators': 100}
+dino_vitb8;LogisticRegression;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1}
+dino_vitb8;KNeighborsClassifier;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_neighbors': 3, 'weights': 'uniform'}
+dino_vitb8;SVC;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'C': 1, 'gamma': 0.001, 'kernel': 'rbf'}
+dino_vitb8;RandomForestClassifier;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'n_estimators': 100}
+dino_vitb8;MLPClassifier;257;63;80;4;1.0;[1. 1.];[1. 1.];[1. 1.];{'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (10, 30, 10), 'learning_rate': 'constant', 'solver': 'sgd'}
+dino_vitb8;XGBClassifier;257;63;80;4;0.975;[0.975 0.975];[0.975 0.975];[0.975 0.975];{'n_estimators': 100}
